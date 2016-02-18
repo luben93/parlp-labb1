@@ -2,49 +2,66 @@
 import java.util.ArrayDeque;
 import java.util.Comparator;
 import java.util.Queue;
+import java.util.Random;
+
 /**
  * created by luben
  */
 public class QuickSort {
 
     public static void main(String[] args) {
-        int size =500;
-        ArrayDeque<Integer> que = new ArrayDeque<Integer>(size);
-        Integer[] arr = new Integer[size];
+       /* int size =500;
+        ArrayDeque<Float> que = new ArrayDeque<Float>(size);
+        Float[] arr = new Float[size];
         int v;
         for (int i = 0; i < size; i++) {
             v = (int) (Math.random() * 100) + 1;
-            que.add(v);
-            arr[i] = v;
+            que.add(Float.intBitsToFloat(v));
+            arr[i] = Float.intBitsToFloat(v);
+        }*/
+        //Float[] a = {14f, 41f, 63f, 12f, 4f, 53f, 78f, 24f, 74f, 32f, 167f, 36f, 56f, 95f, 43f};
+        Float[] arr = {14f, 41f, 63f, 12f, 4f, 53f, 78f, 24f, 74f, 32f, 167f, 36f, 56f, 95f, 43f};
+        Random rand = new Random();
+        for (int i = 0; i < 20; i++) {
+            System.out.println(rand.nextFloat());
+        }
+        int size = arr.length;
+        ArrayDeque<Float> que = new ArrayDeque<Float>(size);
+        for (Float f : arr) {
+            que.add(f);
         }
 
-        quickSort(que, new Comparator<Integer>() {
+        quickSort(que, new Comparator<Float>() {
             @Override
-            public int compare(Integer o1, Integer o2) {
-                return o1 - o2;
+            public int compare(Float o1, Float o2) {
+                return o1.compareTo(o2);
             }
         });
-
-        quickSortInPlace(arr,  new Comparator<Integer>() {
+        quickSortInPlace(arr, new Comparator<Float>() {
             @Override
-            public int compare(Integer o1, Integer o2) {
-                return o1 - o2;
+            public int compare(Float o1, Float o2) {
+                return o1.compareTo(o2);
             }
-        }, 0, size-1);
-       // System.out.println(que.pollFirst()+"   "+arr[0]);
-        for (int i = 1; i < size; i++) {
-           // System.out.println(que.pollFirst()+"   "+arr[i]);
-            if(arr[i-1]>arr[i]){
-                System.out.print("error");
-                return;
+        }, 0, size - 1);
+        // System.out.println(que.pollFirst()+"   "+arr[0]);
+        for (int i = 0; i < size; i++) {
+            System.out.println(que.pollFirst() + "   " + arr[i]);
+            if (i != 0) {
+                if (arr[i - 1] > arr[i]) {
+                    System.out.print("error");
+                    return;
+                }
             }
+
         }
         System.out.print("success");
     }
 
     public static <K> void quickSort(Queue<K> S, Comparator<K> comp) {
         int n = S.size();
-        if (n < 2) { return; } // queue is trivially sorted
+        if (n < 2) {
+            return;
+        } // queue is trivially sorted
         // divide
         K pivot = S.peek(); // using first as arbitrary pivot
         Queue<K> L = new ArrayDeque<K>();
@@ -78,8 +95,10 @@ public class QuickSort {
         K pivot = S[b];
         K temp; // temp object used for swapping
         while (left <= right) {
-            while (left <= right && comp.compare(S[left], pivot) < 0) left++;            // scan until reaching value equal or larger than pivot (or right marker)
-            while (left <= right && comp.compare(S[right], pivot) > 0) right--;            // scan until reaching value equal or smaller than pivot (or left marker)
+            while (left <= right && comp.compare(S[left], pivot) < 0)
+                left++;            // scan until reaching value equal or larger than pivot (or right marker)
+            while (left <= right && comp.compare(S[right], pivot) > 0)
+                right--;            // scan until reaching value equal or smaller than pivot (or left marker)
             if (left <= right) { // indices did not strictly cross
                 temp = S[left];                // so swap values and shrink range
                 S[left] = S[right];

@@ -1,10 +1,9 @@
 
 public class MergeSort {
-
     public static void main(String[] args) {
-        int[] a = {14, 41, 63, 12, 4, 53, 78, 24, 74, 32, 167, 36, 56, 95, 43};
-        int[] c = {14, 41, 63, 12, 4, 53, 78, 24, 74, 32, 167, 36, 56, 95, 43};
-        int[] b = mergeSort(a);
+        float[] a = {14, 41, 63, 12, 4, 53, 78, 24, 74, 32, 167, 36, 56, 95, 43};
+        float[] c = {14, 41, 63, 12, 4, 53, 78, 24, 74, 32, 167, 36, 56, 95, 43};
+        float[] b = mergeSort(a);
         MergeSort_Recursive(c, 0, c.length - 1);
         System.out.println("min   online");
 
@@ -15,14 +14,14 @@ public class MergeSort {
     }
 
 
-    private static int[] mergeSort(int[] a) {
-        int[] b, c;
+    private static float[] mergeSort(float[] a) {
+        float[] b, c;
         //int ci;
         if (a.length == 1) {
             return a;
         }
-        b = new int[a.length / 2];
-        c = new int[a.length-b.length];
+        b = new float[a.length / 2];
+        c = new float[a.length-b.length];
         for (int i = 0; i < (a.length / 2); i++) {
             //System.out.println("b"+i);
             b[i] = a[i];
@@ -32,13 +31,13 @@ public class MergeSort {
             //System.out.println("c"+i);
             c[i] = a[i+a.length/2];
         }
-       // int[] b2 = mergeSort(b);
-       // int[] c2 = mergeSort(c);
+       // float[] b2 = mergeSort(b);
+       // float[] c2 = mergeSort(c);
         return merge(mergeSort(b), mergeSort(c), a);
     }
 
 
-    private static int[] merge(int[] a, int[] b, int[] c) {
+    private static float[] merge(float[] a, float[] b, float[] c) {
         int indexa = 0, indexb = 0, indexc = 0;
         int n = a.length, m = b.length;
         while (indexa < n && indexb < m) {
@@ -60,8 +59,8 @@ public class MergeSort {
         }
         return c;
     }
-
-    static public void MergeSort_Recursive(int[] numbers, int left, int right) {
+//*/
+    static public void MergeSort_Recursive(float[] numbers, int left, int right) {
         int mid;
 
         if (right > left) {
@@ -73,8 +72,8 @@ public class MergeSort {
         }
     }
 
-    static public void DoMerge(int[] numbers, int left, int mid, int right) {
-        int[] temp = new int[numbers.length];
+    static public void DoMerge(float[] numbers, int left, int mid, int right) {
+        float[] temp = new float[numbers.length];
         int i, left_end, num_elements, tmp_pos;
 
         left_end = (mid - 1);
