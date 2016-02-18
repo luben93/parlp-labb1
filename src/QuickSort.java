@@ -20,7 +20,7 @@ public class QuickSort {
             arr[i] = Float.intBitsToFloat(v);
         }*/
         //Float[] a = {14f, 41f, 63f, 12f, 4f, 53f, 78f, 24f, 74f, 32f, 167f, 36f, 56f, 95f, 43f};
-        Float[] arr = {14f, 41f, 63f, 12f, 4f, 53f, 78f, 24f, 74f, 32f, 167f, 36f, 56f, 95f, 43f};
+        float[] arr = {14f, 41f, 63f, 12f, 4f, 53f, 78f, 24f, 74f, 32f, 167f, 36f, 56f, 95f, 43f};
         Random rand = new Random();
         for (int i = 0; i < 20; i++) {
             System.out.println(rand.nextFloat());
@@ -88,12 +88,12 @@ public class QuickSort {
     }
 
 
-    private static <K> void quickSortInPlace(K[] S, Comparator<K> comp, int a, int b) {
+    private static  void quickSortInPlace(float[] S, Comparator<Float> comp, int a, int b) {
         if (a >= b) return; // subarray is trivially sorted
         int left = a;
         int right = b - 1;
-        K pivot = S[b];
-        K temp; // temp object used for swapping
+        float pivot = S[b];
+        float temp; // temp object used for swapping
         while (left <= right) {
             while (left <= right && comp.compare(S[left], pivot) < 0)
                 left++;            // scan until reaching value equal or larger than pivot (or right marker)
