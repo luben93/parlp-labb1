@@ -7,22 +7,22 @@ import java.util.concurrent.RecursiveTask;
  */
 
 
-public class QuickSortTask extends RecursiveAction{
+public class QuickSortTask extends RecursiveAction {
 
     public static final int THRESHOLD = (int) 1E6;
     private float[] S;
     private Comparator<Float> comp;
-    private int a,b;
+    private int a, b;
 
-    public float[] getResult(){
+    public float[] getResult() {
         return S;
     }
 
-    public QuickSortTask(float[] s,Comparator<Float> c,int start,int stop){
-        S=s;
-        comp=c;
-        a=start;
-        b=stop;
+    public QuickSortTask(float[] s, Comparator<Float> c, int start, int stop) {
+        S = s;
+        comp = c;
+        a = start;
+        b = stop;
 
     }
 
