@@ -1,12 +1,15 @@
 import java.util.Comparator;
 import java.util.Random;
+import java.util.concurrent.ForkJoinPool;
 
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("Hello World! cores avalible: ");
         Random rand = new Random();
-        int size = 5000000;
+        int cores=Runtime.getRuntime().availableProcessors();
+        System.out.println(cores);
+        int size = 50000;
         float[] QuickArr = new float[size];
         float[] MergeArr = new float[size];
         for (int i = 0; i < size ; i++) {
@@ -14,17 +17,28 @@ public class Main {
             QuickArr[i]=val;
             MergeArr[i]=val;
         }
+        QuickSortTask quick = new QuickSortTask(QuickArr, new Comparator<Float>() {
+            @Override
+            public int compare(Float o1, Float o2) {
+                return o1.compareTo(o2);
+            }
+        }, 0, size - 1);
+        ForkJoinPool pool = new ForkJoinPool(cores);
+
+        pool.invoke(quick);
+        QuickArr=quick.getResult();// TODO reassasing quickarr
+        /*
         quickSortInPlace(QuickArr, new Comparator<Float>() {
             @Override
             public int compare(Float o1, Float o2) {
                 return o1.compareTo(o2);
             }
         }, 0, size - 1);
+        */
         MergeSort_Recursive(MergeArr, 0, size - 1);
 
 
         for (int i = 1; i < size; i++) {
-           // System.out.println(que.pollFirst() + "   " + arr[i]);
                 if (QuickArr[i - 1] > QuickArr[i]) {
                     System.out.print("error");
                     return;
@@ -38,7 +52,7 @@ public class Main {
         System.out.print("success");
 
     }
-
+/*
     private static  void quickSortInPlace(float[] S, Comparator<Float> comp, int a, int b) {
         if (a >= b) return; // subarray is trivially sorted
         int left = a;
@@ -64,7 +78,7 @@ public class Main {
         quickSortInPlace(S, comp, a, left - 1);        // make recursive calls
         quickSortInPlace(S, comp, left + 1, b);
     }
-
+*/
     static public void MergeSort_Recursive(float[] numbers, int left, int right) {
         int mid;
 
