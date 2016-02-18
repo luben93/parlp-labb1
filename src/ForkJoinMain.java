@@ -17,7 +17,7 @@ public class ForkJoinMain {
 
 		
 		// Generate data
-		final int SIZE = (int) 700000000;
+		final int SIZE = (int) 700000000; //max for 4gb heap mem
 		int[] arr = new int[SIZE];
 		Random rand = new Random();
 		for (int i = 0; i < arr.length; i++) {
