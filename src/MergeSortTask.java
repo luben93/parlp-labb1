@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.concurrent.RecursiveAction;
 
 /**
@@ -5,6 +6,7 @@ import java.util.concurrent.RecursiveAction;
  */
 public class MergeSortTask extends RecursiveAction {
     private float[] numbers;
+    public static final int THRESHOLD = (int) 1000; //should be lower than size
     private int left, right;
 
     public MergeSortTask(float[] arr, int a, int b) {
@@ -14,19 +16,24 @@ public class MergeSortTask extends RecursiveAction {
     }
 
     @Override
-    public void compute() {
+    public void compute() {//TODO use THRESHOLD
         int mid;
+
 
         if (right > left) {
             mid = (right + left) / 2;
-            //MergeSort_Recursive(numbers, left, mid);
-            //MergeSort_Recursive(numbers, (mid + 1), right);
-            MergeSortTask w1 = new MergeSortTask(numbers, left, mid);
-            MergeSortTask w2 = new MergeSortTask(numbers, (mid + 1), right);
-            w1.fork();
-            w2.compute();
-            w1.join();
-            DoMerge(numbers, left, (mid + 1), right);
+            if (mid < THRESHOLD) {
+                Arrays.sort(numbers);
+            } else {
+                //MergeSort_Recursive(numbers, left, mid);
+                //MergeSort_Recursive(numbers, (mid + 1), right);
+                MergeSortTask w1 = new MergeSortTask(numbers, left, mid);
+                MergeSortTask w2 = new MergeSortTask(numbers, (mid + 1), right);
+                w1.fork();
+                w2.compute();
+                w1.join();
+                DoMerge(numbers, left, (mid + 1), right);
+            }
         }
     }
 
