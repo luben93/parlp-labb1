@@ -5,7 +5,7 @@ import java.util.concurrent.RecursiveAction;
  */
 public class MergeSortTask extends RecursiveAction {
     private float[] numbers;
-    public static final int THRESHOLD = (int) 1000;
+    public static final int THRESHOLD = Main.mergeThreshold;
     private int left, right;
 
     public MergeSortTask(float[] arr, int a, int b) {

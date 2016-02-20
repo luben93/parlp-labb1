@@ -1,7 +1,6 @@
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.concurrent.RecursiveAction;
-import java.util.concurrent.RecursiveTask;
 
 /**
  * Created by luben on 2/18/16.
@@ -10,7 +9,7 @@ import java.util.concurrent.RecursiveTask;
 
 public class QuickSortTask extends RecursiveAction {
 
-    public static final int THRESHOLD = (int) 1000;
+    public static final int THRESHOLD = Main.quickThreshold;
     private float[] S;
     private Comparator<Float> comp;
     private int a, b;
