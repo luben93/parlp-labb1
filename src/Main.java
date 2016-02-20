@@ -14,9 +14,9 @@ public class Main {
     private int cores = 4;
     //private int size = 1000;
     private int size = (int) 1E8;
-    public static int mergeThreshold = 8000;
-    public static int quickThreshold = 100;
-    private static boolean quick=true;
+    public static int mergeThreshold = 10000;
+    public static int quickThreshold = 10000;
+    private static boolean quick=false;
     private static boolean runQuick = quick;
     private static boolean runMerge = !quick;
 

@@ -132,3 +132,29 @@ result below, Main{cores=4, size=100000000, mergeThreshold=8000, quickThreshold=
 12833495335
 12655822948
 12703986904
+result below, Main{cores=8, size=100000000, mergeThreshold=8000, quickThreshold=100, quickSort}
+13112706648
+12916583618
+12995452398
+12880703018
+12991111573
+12940317579
+12935273893
+12953205599
+13355742371
+13569850900
+12820043491
+result below, Main{cores=8, size=1000, mergeThreshold=8000, quickThreshold=100, quickSort}
+2500110
+796085
+305068
+240163
+373539
+result below, Main{cores=8, size=100000000, mergeThreshold=8000, quickThreshold=100, quickSort}
+13041251722
+12559860391
+12706414130
+result below, Main{cores=8, size=100000000, mergeThreshold=8000, quickThreshold=100, quickSort}
+result below, Main{cores=8, size=100000000, mergeThreshold=8000, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=8000, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=100, quickThreshold=100, quickSort}

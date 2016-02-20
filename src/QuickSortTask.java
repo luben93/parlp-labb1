@@ -28,9 +28,11 @@ public class QuickSortTask extends RecursiveAction {
 
     @Override
     protected void compute() {//TODO use THRESHOLD
-        if(a-b < THRESHOLD){
+        if(b-a < THRESHOLD){
             Arrays.sort(S);
         }else {
+//                        System.out.println("borde inte skrivas ut");
+
             if (a >= b) return; // subarray is trivially sorted
             int left = a;
             int right = b - 1;

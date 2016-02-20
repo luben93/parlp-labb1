@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.concurrent.RecursiveAction;
 
 /**
@@ -14,26 +15,27 @@ public class MergeSortTask extends RecursiveAction {
         right = b;
     }
 
+
     @Override
     public void compute() {
         int mid;
-
-
-        if (right > left) {
-            mid = (right + left) / 2;
+        if (  right - left < THRESHOLD) {
+            //w2.compute();
+            //w1.compute();
+            Arrays.sort(numbers);//gives errors
+        } else {
+//            System.out.println("borde inte skrivas ut");
+            if (right > left) {
+                mid = (right + left) / 2;
                 MergeSortTask w1 = new MergeSortTask(numbers, left, mid);
                 MergeSortTask w2 = new MergeSortTask(numbers, (mid + 1), right);
-            if (left-right < THRESHOLD) {
-                w2.compute();
-                w1.compute();
-                //Arrays.sort(numbers);//gives errors
-            } else {
+
                 w1.fork();
                 w2.compute();
                 w1.join();
-            }
-                DoMerge(numbers, left, (mid + 1), right);
 
+                DoMerge(numbers, left, (mid + 1), right);
+            }
         }
     }
 
