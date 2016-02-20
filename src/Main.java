@@ -13,7 +13,7 @@ public class Main {
     //parameters, test different
     private int cores = 4;
     //private int size = 1000;
-    private int size = (int) 1E8;
+    private int size = (int) 1000;
     public static int mergeThreshold = 10000;
     public static int quickThreshold = 10000;
     private static boolean quick=false;
