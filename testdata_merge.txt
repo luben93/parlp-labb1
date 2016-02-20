@@ -1,0 +1,2 @@
+result below, Main{cores=8, size=100000000, mergeThreshold=100, quickThreshold=100, mergeSort}
+result below, Main{cores=8, size=1000000, mergeThreshold=100, quickThreshold=100, mergeSort}

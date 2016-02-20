@@ -12,10 +12,11 @@ import java.util.concurrent.ForkJoinPool;
 public class Main {
     //parameters, test different
     private int cores = 8;
-    private int size = (int) 1E8;
+    private int size = 1000000;
+   // private int size = (int) 1E8;
     public static int mergeThreshold = 100;
     public static int quickThreshold = 100;
-    private static boolean quick=true;
+    private static boolean quick=false;
     private static boolean runQuick = quick;
     private static boolean runMerge = !quick;
 
