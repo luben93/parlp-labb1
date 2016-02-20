@@ -1,2 +1,27 @@
 result below, Main{cores=8, size=100000000, mergeThreshold=100, quickThreshold=100, mergeSort}
 result below, Main{cores=8, size=1000000, mergeThreshold=100, quickThreshold=100, mergeSort}
+result below, Main{cores=8, size=1000000, mergeThreshold=100, quickThreshold=100, mergeSort}
+result below, Main{cores=8, size=1000, mergeThreshold=100, quickThreshold=100, mergeSort}
+5299973
+1610499
+2095495
+1755710
+1310454
+1777405
+1784327
+1357572
+1788603
+1123122
+2627628
+result below, Main{cores=8, size=1000, mergeThreshold=100, quickThreshold=100, mergeSort}
+5471548
+1093925
+2827820
+774224
+702931
+560679
+892582
+841530
+704632
+705742
+735770
