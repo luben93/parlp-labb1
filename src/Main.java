@@ -1,7 +1,9 @@
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
@@ -59,7 +61,7 @@ public class Main {
         }
         file = Paths.get(name);
         //Files.write(file, lines, Charset.forName("UTF-8"));
-        Files.write(file, Arrays.<CharSequence>asList("result below, "+this.toString()), Charset.forName("UTF-8"));
+        write("result below, "+this.toString());
 
         Random rand = new Random();
         pool = new ForkJoinPool(cores);
@@ -85,6 +87,14 @@ public class Main {
         System.out.println("found i-1 < i " + seq + " times in a array with the size " + size);
         System.out.println(pool.toString());
 
+    }
+
+    public void write(String str){
+        try {
+            Files.write(file, Arrays.<CharSequence>asList(str), Charset.forName("UTF-8"), StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void quick() throws Exception {
@@ -113,7 +123,7 @@ public class Main {
                 throw new Exception("not sorted");
             }
         }
-        Files.write(file, Arrays.<CharSequence>asList(elapsed+""), Charset.forName("UTF-8"));
+        write(elapsed+"");
         System.out.println(elapsed + " ns, quick success");
     }
 
@@ -140,7 +150,7 @@ public class Main {
                 throw new Exception("not sorted " + str);
             }
         }
-        Files.write(file, Arrays.<CharSequence>asList(elapsed+""), Charset.forName("UTF-8"));
+        write(elapsed+"");
         System.out.println(elapsed + " ns, merge success");
 
     }
