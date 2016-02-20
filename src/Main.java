@@ -3,23 +3,40 @@ import java.util.Random;
 import java.util.concurrent.ForkJoinPool;
 
 public class Main {
-    private ForkJoinPool pool=new ForkJoinPool();
-    private int size = 50000; // 50000000 MAX MEMORY SIZE
+    private ForkJoinPool pool;
+    private int size = 10000; // 50000000 MAX MEMORY SIZE
     private float[] arr=new float[size];
+    private float[] MergeArr=new float[size];
+    private float[] QuickArr=new float[size];
 
-    public static void main(String[] args) throws InterruptedException {
-        Main m = new Main();
+    public static void main(String[] args)  {
+        Main m = null;
+        try {
+            m = new Main();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         for (int i = 0; i < 10; i++) {
-            m.quick();
+            try {
+                m.merge();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         System.out.println("-----------------------------------------------");
         for (int i = 0; i < 10; i++) {
-            m.merge();
+            try {
+                m.quick();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+
     }
 
-    public Main() throws InterruptedException {
+    public Main() throws Exception {
         Random rand = new Random();
+        pool=new ForkJoinPool();
         for (int i = 0; i < size; i++) {
             float val = rand.nextFloat();
             arr[i] = val;
@@ -28,14 +45,26 @@ public class Main {
         System.out.println("dry run done quick");
         this.merge();
         System.out.println("dry run done merge");
+        int seq=0;
+        for (int i = 1; i < size; i++) {
+            if (arr[i - 1] < arr[i]) {
+                //System.out.println("sequential");
+                seq++;
+            }
+        }
+        System.out.println("found i-1 < i "+seq+" times in a array with the size "+size);
+        System.out.println(pool.toString());
+
     }
 
-    public void quick() throws InterruptedException {
+    public void quick() throws Exception {
         System.gc();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
+        System.out.print("morning ");
 
 
-        QuickSortTask quick = new QuickSortTask(arr, new Comparator<Float>() {
+        System.arraycopy(arr,0,QuickArr,0,size);
+        QuickSortTask quick = new QuickSortTask(QuickArr, new Comparator<Float>() {
             @Override
             public int compare(Float o1, Float o2) {
                 return o1.compareTo(o2);
@@ -51,27 +80,33 @@ public class Main {
         for (int i = 1; i < size; i++) {
             if (QuickArr[i - 1] > QuickArr[i]) {
                 System.out.print("error");
-                return;
+                throw new Exception("not sorted");
             }
         }
         System.out.println(elapsed + " ns, quick success");
     }
 
-    public void merge() throws InterruptedException {
+    public void merge() throws Exception {
         System.gc();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
+        System.out.print("morning ");
 
-        MergeSortTask merge = new MergeSortTask(arr, 0, size - 1);
+        System.arraycopy(arr,0,MergeArr,0,size);
+
+        MergeSortTask merge = new MergeSortTask(MergeArr, 0, size - 1);
 
         long start = System.nanoTime();
         pool.invoke(merge);
         long elapsed = System.nanoTime() - start;
 
-        float[] MergeArr = merge.getResult();
+        MergeArr = merge.getResult();
         for (int i = 1; i < size; i++) {
             if (MergeArr[i - 1] > MergeArr[i]) {
-                System.out.print("error");
-                return;
+                float index1=MergeArr[i - 1];
+                float index2= MergeArr[i];
+                String str="error i1:"+index1+" i2:"+ index2+ " i:"+i +" i1-i2:"+(index1-index2);
+                System.err.println(str);
+                throw new Exception("not sorted " +str);
             }
         }
         System.out.println(elapsed + " ns, merge success");
