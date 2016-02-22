@@ -19,12 +19,8 @@ public class MergeSortTask extends RecursiveAction {
     public void compute() {
         int mid;
         if (  right - left < THRESHOLD) {
-            //w2.compute();
-            //w1.compute();
-            //Arrays.sort(numbers);//gives errors
             QuickSortTask.sort(numbers,left,right);
         } else {
-//            System.out.println("borde inte skrivas ut");
             if (right > left) {
                 mid = (right + left) / 2;
                 MergeSortTask w1 = new MergeSortTask(numbers, left, mid);

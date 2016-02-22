@@ -17,7 +17,7 @@ public class Main {
     public static int quickThreshold = 100;
     private static boolean quick=true;
     private static boolean runQuick = quick;
-    private static boolean runMerge = !quick;
+    private static boolean runMerge = true;
 
 
     private ForkJoinPool pool;
