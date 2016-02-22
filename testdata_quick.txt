@@ -158,3 +158,73 @@ result below, Main{cores=8, size=100000000, mergeThreshold=8000, quickThreshold=
 result below, Main{cores=8, size=100000000, mergeThreshold=8000, quickThreshold=100, quickSort}
 result below, Main{cores=4, size=100000000, mergeThreshold=8000, quickThreshold=100, quickSort}
 result below, Main{cores=4, size=100000000, mergeThreshold=100, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=1000000, mergeThreshold=10000, quickThreshold=10000, quickSort}
+result below, Main{cores=4, size=1000000, mergeThreshold=10000, quickThreshold=10000, quickSort}
+result below, Main{cores=4, size=100000, mergeThreshold=10000, quickThreshold=10000, quickSort}
+result below, Main{cores=4, size=100000, mergeThreshold=100, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=10000, mergeThreshold=100, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=10000, mergeThreshold=100, quickThreshold=100, quickSort}
+255499965
+83411102
+73117833
+92481313
+79312469
+result below, Main{cores=4, size=1000000, mergeThreshold=100, quickThreshold=1000, quickSort}
+result below, Main{cores=4, size=1000000, mergeThreshold=100, quickThreshold=10, quickSort}
+result below, Main{cores=4, size=1000000, mergeThreshold=100, quickThreshold=0, quickSort}
+result below, Main{cores=4, size=1000000, mergeThreshold=100, quickThreshold=-1, quickSort}
+227332456
+58537234
+61682970
+67848233
+61669095
+65258551
+result below, Main{cores=4, size=100000000, mergeThreshold=100, quickThreshold=-1, quickSort}
+8363987288
+7213113309
+6935066400
+6978049371
+6974565789
+7581450600
+7658147110
+7177534586
+8482300558
+6950944621
+6916363149
+result below, Main{cores=4, size=100000000, mergeThreshold=100, quickThreshold=-1, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=-1, quickThreshold=-1, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=-1, quickThreshold=-1, mergeSort}
+result below, Main{cores=4, size=1000000, mergeThreshold=-1, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=1000000, mergeThreshold=-1, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=1000000, mergeThreshold=-1, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=1000000, mergeThreshold=-1, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=1000000, mergeThreshold=-1, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=1000000, mergeThreshold=-1, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=1000000, mergeThreshold=-1, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=1000000, mergeThreshold=-1, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=1000000, mergeThreshold=-1, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=1000000, mergeThreshold=-1, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=1000000, mergeThreshold=-1, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=10000, mergeThreshold=-1, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=10000, mergeThreshold=-1, quickThreshold=100, quickSort}
+result below, Main{cores=4, size=10000, mergeThreshold=-1, quickThreshold=100, quickSort}
+15087768
+1569154
+1094739
+1060354
+1088244
+1025394
+1408885
+1517088
+result below, Main{cores=4, size=1000000, mergeThreshold=100, quickThreshold=100, quickSort}
+244634279
+68574576
+79275912
+71925724
+64218974
+91690122
+result below, Main{cores=4, size=100000000, mergeThreshold=100, quickThreshold=100, quickSort}
+8491732687
+8278469687
+9030374372
+10369352043

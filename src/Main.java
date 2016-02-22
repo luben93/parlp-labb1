@@ -5,7 +5,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Random;
 import java.util.concurrent.ForkJoinPool;
 
@@ -13,7 +12,7 @@ public class Main {
     //parameters, test different
     private int cores = 4;
     //private int size = 1000;
-    private int size = (int) 1E5;//1E8;
+    private int size = (int) 1E8;//1E8;
     public static int mergeThreshold = 100;
     public static int quickThreshold = 100;
     private static boolean quick=true;
@@ -28,13 +27,11 @@ public class Main {
     private Path fileMerge;
     private Path fileQuick;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Main m = null;
-        try {
+
             m = new Main();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         if (runMerge) {
             for (int i = 0; i < 10; i++) {
                 try {
@@ -114,12 +111,7 @@ public class Main {
 
 
         System.arraycopy(arr, 0, QuickArr, 0, size);
-        QuickSortTask quick = new QuickSortTask(QuickArr, new Comparator<Float>() {
-            @Override
-            public int compare(Float o1, Float o2) {
-                return o1.compareTo(o2);
-            }
-        }, 0, size - 1);
+        QuickSortTask quick = new QuickSortTask(QuickArr, (o1, o2) -> o1.compareTo(o2), 0, size - 1);
 
         long start = System.nanoTime();
         pool.invoke(quick);
@@ -130,7 +122,11 @@ public class Main {
         for (int i = 1; i < size; i++) {
             if (QuickArr[i - 1] > QuickArr[i]) {
                 System.out.print("error");
-                throw new Exception("not sorted");
+                float index1 = QuickArr[i - 1];
+                float index2 = QuickArr[i];
+                String str = "error i1:" + index1 + " i2:" + index2 + " i:" + i + " i1-i2:" + (index1 - index2);
+                System.err.println(str);
+                throw new Exception("not sorted " + str);
             }
         }
         writeQuick(elapsed+"");

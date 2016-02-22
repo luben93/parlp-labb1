@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.concurrent.RecursiveAction;
 
@@ -29,10 +28,11 @@ public class QuickSortTask extends RecursiveAction {
     @Override
     protected void compute() {//TODO use THRESHOLD
         if(b-a < THRESHOLD){
-            Arrays.sort(S);
+            //Arrays.sort(S);//TODO  errors from here
+            sort(S,a,b);
         }else {
 //                        System.out.println("borde inte skrivas ut");
-
+/*
             if (a >= b) return; // subarray is trivially sorted
             int left = a;
             int right = b - 1;
@@ -54,8 +54,11 @@ public class QuickSortTask extends RecursiveAction {
             temp = S[left];        // put pivot into its final place (currently marked by left index)
             S[left] = S[b];
             S[b] = temp;
+            */
             //quickSortInPlace(S, comp, a, left - 1);        // make recursive calls
             //quickSortInPlace(S, comp, left + 1, b);
+            int left = sort(S,comp,a,b,false);
+
             QuickSortTask worker1 = new QuickSortTask(S, comp, a, left - 1);
             QuickSortTask worker2 = new QuickSortTask(S, comp, left + 1, b);
             worker1.fork();
@@ -63,4 +66,39 @@ public class QuickSortTask extends RecursiveAction {
             worker1.join();
         }
     }
+
+    public static int sort(float[] S,int a,int b){
+        return sort(S, (o1, o2) -> o1.compareTo(o2),a,b,true);
+    }
+
+    private static int sort(float[] S,Comparator<Float> comp,int a,int b,boolean recuse){
+        if (a >= b) return 0; // subarray is trivially sorted
+        int left = a;
+        int right = b - 1;
+        float pivot = S[b];
+        float temp; // temp object used for swapping
+        while (left <= right) {
+            while (left <= right && comp.compare(S[left], pivot) < 0)
+                left++;            // scan until reaching value equal or larger than pivot (or right marker)
+            while (left <= right && comp.compare(S[right], pivot) > 0)
+                right--;            // scan until reaching value equal or smaller than pivot (or left marker)
+            if (left <= right) { // indices did not strictly cross
+                temp = S[left];                // so swap values and shrink range
+                S[left] = S[right];
+                S[right] = temp;
+                left++;
+                right--;
+            }
+        }
+        temp = S[left];        // put pivot into its final place (currently marked by left index)
+        S[left] = S[b];
+        S[b] = temp;
+        if(recuse){
+            sort(S, comp, a, left - 1,true);
+            sort(S, comp, left + 1, b,true);
+        }
+        //TODO sort
+        return left;
+    }
+
 }

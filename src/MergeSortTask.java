@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.concurrent.RecursiveAction;
 
 /**
@@ -22,7 +21,8 @@ public class MergeSortTask extends RecursiveAction {
         if (  right - left < THRESHOLD) {
             //w2.compute();
             //w1.compute();
-            Arrays.sort(numbers);//gives errors
+            //Arrays.sort(numbers);//gives errors
+            QuickSortTask.sort(numbers,left,right);
         } else {
 //            System.out.println("borde inte skrivas ut");
             if (right > left) {
