@@ -13,11 +13,11 @@ public class Main {
     private int cores = 4;
     //private int size = 1000;
     private int size = (int) 1E8;//1E8;
-    public static int mergeThreshold = 100;
+    public static int mergeThreshold = (int)1E6;
     public static int quickThreshold = 100;
-    private static boolean quick=true;
+    private static boolean quick=false;
     private static boolean runQuick = quick;
-    private static boolean runMerge = true;
+    private static boolean runMerge = !quick;
 
 
     private ForkJoinPool pool;
@@ -28,9 +28,7 @@ public class Main {
     private Path fileQuick;
 
     public static void main(String[] args) throws Exception {
-        Main m = null;
-
-            m = new Main();
+        Main m =  new Main();
 
         if (runMerge) {
             for (int i = 0; i < 10; i++) {

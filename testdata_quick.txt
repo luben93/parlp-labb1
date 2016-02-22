@@ -1,0 +1,39 @@
+result below, Main{cores=4, size=100000000, mergeThreshold=100, quickThreshold=100, quickSort}
+8460198430
+9994943035
+9281762579
+8479116679
+8762271749
+8724625073
+10492954423
+8845454208
+8861472020
+8305883023
+8283702936
+result below, Main{cores=4, size=10000000, mergeThreshold=100, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=10000000, mergeThreshold=5000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=10000000, mergeThreshold=9000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=10000000, mergeThreshold=10000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=100000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=100000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=100000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=10000000, mergeThreshold=100, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=10000000, mergeThreshold=10000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=10000000, mergeThreshold=100000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=10000000, mergeThreshold=1000000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=1000000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=1000000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=1000000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=500000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=500000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=5000000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=100000000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=100000000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=1000000000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=1000000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=100000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=1000000, quickThreshold=100, mergeSort}
