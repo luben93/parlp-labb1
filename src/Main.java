@@ -13,10 +13,10 @@ public class Main {
     //parameters, test different
     private int cores = 4;
     //private int size = 1000;
-    private int size = (int) 1E8;
-    public static int mergeThreshold = 10000;
-    public static int quickThreshold = 10000;
-    private static boolean quick=false;
+    private int size = (int) 1E5;//1E8;
+    public static int mergeThreshold = 100;
+    public static int quickThreshold = 100;
+    private static boolean quick=true;
     private static boolean runQuick = quick;
     private static boolean runMerge = !quick;
 
@@ -25,7 +25,8 @@ public class Main {
     private float[] arr = new float[size];
     private float[] MergeArr = new float[size];
     private float[] QuickArr = new float[size];
-    private Path file;
+    private Path fileMerge;
+    private Path fileQuick;
 
     public static void main(String[] args) {
         Main m = null;
@@ -56,13 +57,12 @@ public class Main {
     }
 
     public Main() throws Exception {
-        String name="testdata_merge.txt";
-        if(quick){
-           name= "testdata_quick.txt";
-        }
-        file = Paths.get(name);
-        //Files.write(file, lines, Charset.forName("UTF-8"));
-        write("result below, "+this.toString());
+        fileMerge= Paths.get("testdata_merge.txt");
+        writeMerge("result below, "+this.toString());
+
+        fileQuick= Paths.get("testdata_quick.txt");
+        writeQuick("result below, "+this.toString());
+
 
         Random rand = new Random();
         pool = new ForkJoinPool(cores);
@@ -90,9 +90,18 @@ public class Main {
 
     }
 
-    public void write(String str){
+
+    public void writeQuick(String str){
         try {
-            Files.write(file, Arrays.<CharSequence>asList(str), Charset.forName("UTF-8"), StandardOpenOption.APPEND);
+            Files.write(fileQuick , Arrays.<CharSequence>asList(str), Charset.forName("UTF-8"), StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeMerge(String str){
+        try {
+            Files.write(fileMerge, Arrays.<CharSequence>asList(str), Charset.forName("UTF-8"), StandardOpenOption.APPEND);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -124,7 +133,7 @@ public class Main {
                 throw new Exception("not sorted");
             }
         }
-        write(elapsed+"");
+        writeQuick(elapsed+"");
         System.out.println(elapsed + " ns, quick success");
     }
 
@@ -151,7 +160,7 @@ public class Main {
                 throw new Exception("not sorted " + str);
             }
         }
-        write(elapsed+"");
+        writeMerge(elapsed+"");
         System.out.println(elapsed + " ns, merge success");
 
     }
@@ -161,6 +170,9 @@ public class Main {
         String str=", mergeSort";
         if(quick){
             str=", quickSort";
+            if(runMerge){
+                str=str+", mergeSort";
+            }
         }
         return "Main{" +
                 "cores=" + cores +
