@@ -196,3 +196,122 @@ result below, Main{cores=4, size=100000000, mergeThreshold=1000000, quickThresho
 25596876689
 26368558403
 28053194968
+result below, Main{cores=4, size=100000000, mergeThreshold=1000000, quickThreshold=100, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=1000000, quickThreshold=100, mergeSort}
+6528191350
+5979104226
+6010390827
+5593381867
+5582499936
+6266333294
+5393504397
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100, mergeSort}
+3404222664
+3990766155
+3634810272
+3301454380
+3604600630
+3256843920
+3645316122
+3205895811
+3822325606
+3204299461
+3769498286
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=1000, quickSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=1000000, quickThreshold=1000, mergeSort}
+5694361665
+6274894792
+6039046638
+5510956877
+5444074808
+5256428147
+5563571390
+5452367100
+5335015904
+5316717506
+5462862742
+mainframe
+result below, Main{cores=4, size=100000000, mergeThreshold=1000000, quickThreshold=1000, mergeSort}
+6076122819
+5742150218
+6260036087
+5573052896
+5188432496
+5643374425
+5113615178
+5441788462
+5283881286
+5206987597
+5165824002
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=1000, mergeSort}
+3407942221
+3779754296
+3657460994
+3181073420
+3595119232
+3472710246
+3684542678
+3660683002
+3943536981
+3166136247
+3629400158
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=1000, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=1000, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=100000, quickThreshold=1000, mergeSort}
+33016457870
+30337741031
+31276637963
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=1000, quickSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort, mergeSort}
+10480945994
+10236540485
+10240091655
+10226705547
+10177773284
+10152218298
+10159437372
+10178751817
+10150405002
+10172167301
+10200091549
+10193231411
+10198441864
+10199333499
+10185884422
+10183955205
+10191658498
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort, mergeSort}
+result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort, mergeSort}
+10576154480
+10287649260
+10344943536
+10266773076
+10256073518
+10271693790
+10226921743
+10221213421
+10233842906
+10210501792
+10194848572
+10204411108
+10256404423
+10209508037
+10225400644
+10192805391
+10194067531
+10192802373
+10210855939
