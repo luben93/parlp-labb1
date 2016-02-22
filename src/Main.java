@@ -145,7 +145,7 @@ public class Main {
 
 
     public void writeQuick(String str) {
-        System.out.println(str);
+        System.out.print(str);
 
         try {
             Files.write(fileQuick, Arrays.<CharSequence>asList(str), Charset.forName("UTF-8"), StandardOpenOption.APPEND);
@@ -155,7 +155,7 @@ public class Main {
     }
 
     public void writeMerge(String str) {
-        System.out.println(str);
+        System.out.print(str);
 
         try {
             Files.write(fileMerge, Arrays.<CharSequence>asList(str), Charset.forName("UTF-8"), StandardOpenOption.APPEND);
@@ -189,7 +189,7 @@ public class Main {
             }
         }
         writeQuick(elapsed + "");
-        System.out.print(" ns, quick success");
+        System.out.println(" ns, quick success");
 
     }
 
@@ -217,7 +217,7 @@ public class Main {
             }
         }
         writeMerge(elapsed + "");
-        System.out.print(" ns, merge success");
+        System.out.println(" ns, merge success");
 
     }
 
