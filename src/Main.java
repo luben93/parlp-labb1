@@ -10,13 +10,13 @@ import java.util.concurrent.ForkJoinPool;
 
 public class Main {
     //parameters, test different
-    private int cores = 4;
+    //private int cores = 4;
     //private int size = 1000;
     private int size = (int) 1E8;//1E8;
     public static int mergeThreshold = (int) 1E7;
     public static int quickThreshold = (int) 1E5;
     private static boolean quick = true;
-    private static boolean all = true;
+    private static boolean all = false;
     private static boolean runQuick = quick;
     private static boolean runMerge = true;
 
@@ -125,12 +125,10 @@ public class Main {
 
     public Main() throws Exception {
         fileMerge = Paths.get("testdata_merge.txt");
-        writeMerge("result below, " + this.toString());
+        //writeMerge("result below, " + this.toString());
 
         fileQuick = Paths.get("testdata_quick.txt");
-        writeQuick("result below, " + this.toString());
-        System.out.println(toString());
-        System.out.println(pool.toString());
+        //writeQuick("result below, " + this.toString());
 
 
         Random rand = new Random();
@@ -231,7 +229,7 @@ public class Main {
             }
         }
         return "Main{" +
-                "cores=" + cores +
+                "cores=" + pool.getParallelism() +
                 ", size=" + size +
                 ", mergeThreshold=" + mergeThreshold +
                 ", quickThreshold=" + quickThreshold +
