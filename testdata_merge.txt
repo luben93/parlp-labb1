@@ -530,6 +530,7 @@ result below, Main{cores=1, size=100000000, mergeThreshold=10000000, quickThresh
 result below, Main{cores=1, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort, mergeSort}
 result below, Main{cores=1, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort, mergeSort}
 result below, Main{cores=1, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort, mergeSort}
+//Here begins the relevant result data
 result below, Main{cores=1, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort, mergeSort, parllell}
 10583206556
 10435157702
