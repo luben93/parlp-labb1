@@ -20,6 +20,9 @@ public class Main {
     private static boolean runQuick = quick;
     private static boolean runMerge = true;
     private static boolean parl = false;
+    private static boolean Asort=false;
+    private static int start=500;
+    private static int stop=10000000;
 
 
     private static ForkJoinPool pool = new ForkJoinPool();
@@ -98,19 +101,6 @@ public class Main {
             }
         }
         pool = new ForkJoinPool(4);
-
-        if (runMerge) {
-            m.writeMerge("result below, " + m.toString());
-
-            for (int i = 0; i < 21; i++) {
-                try {
-                    m.merge();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        System.out.println("-----------------------------------------------");
         if (runQuick) {
             m.writeQuick("result below, " + m.toString());
 
@@ -124,30 +114,45 @@ public class Main {
         }
         System.out.println("-----------------------------------------------");
 
+        if (runMerge) {
+            m.writeMerge("result below, " + m.toString());
+
+            for (int i = 0; i < 21; i++) {
+                try {
+                    m.merge();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        System.out.println("-----------------------------------------------");
+
 
     }
 
     public static void main(String[] args) {
         try {
             Main m = new Main();
-            m.writeSort(m.toString());
-            for (int i = 0; i < 21; i++) {
-                m.sort();
+            if(Asort) {
+                System.out.println("Arrays.sort");
+                m.writeSort(m.toString());
+                for (int i = 0; i < 21; i++) {
+                    m.sort();
+                }
+
+                System.out.println("-----------------------------------------------");
+                parl = true;
+                m.writeSort(m.toString());
+
+                for (int i = 0; i < 21; i++) {
+                    m.sort();
+                }
+
+                System.out.println("-----------------------------------------------");
             }
-
-            System.out.println("-----------------------------------------------");
-            parl = true;
-            m.writeSort(m.toString());
-
-            for (int i = 0; i < 21; i++) {
-                m.sort();
-            }
-
-            System.out.println("-----------------------------------------------");
-
-            for (int i = 100; i < 1000000; i = i * 5) {
-                quickThreshold = i;
-                mergeThreshold = i;
+            for (; start < stop;start = start * 5) {
+                quickThreshold = start;
+                mergeThreshold = start*100;
                 mainRunner(m);
                 System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++");
             }
