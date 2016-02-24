@@ -19,14 +19,15 @@ public class Main {
     private static boolean all = true;
     private static boolean runQuick = quick;
     private static boolean runMerge = true;
+    private static boolean parl =false;
 
 
     private static ForkJoinPool pool=new ForkJoinPool();
     private float[] arr = new float[size];
     private float[] MergeArr = new float[size];
     private float[] QuickArr = new float[size];
-    private Path fileMerge;
-    private Path fileQuick;
+    private float[] SortArr = new float[size];
+    private Path fileMerge, fileQuick,fileSort;
 
     /**
      * run with:
@@ -39,6 +40,21 @@ public class Main {
         Main m = new Main();
 
         if (all) {
+
+            for(int i=0;i<21;i++){
+                m.sort();
+            }
+
+            System.out.println("-----------------------------------------------");
+            parl=true;
+
+            for(int i=0;i<21;i++){
+                m.sort();
+            }
+
+            System.out.println("-----------------------------------------------");
+
+
             pool = new ForkJoinPool(1);
             if (runMerge) {
                 m.writeMerge("result below, " + m.toString());
@@ -129,7 +145,7 @@ public class Main {
 
         fileQuick = Paths.get("testdata_quick.txt");
         //writeQuick("result below, " + this.toString());
-
+        fileSort = Paths.get("testdata_quick.txt");
 
         Random rand = new Random();
         for (int i = 0; i < size; i++) {
@@ -141,6 +157,16 @@ public class Main {
 
     }
 
+
+    public void writeSort(String str) {
+        System.out.print(str);
+
+        try {
+            Files.write(fileQuick, Arrays.<CharSequence>asList(str), Charset.forName("UTF-8"), StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void writeQuick(String str) {
         System.out.print(str);
@@ -191,7 +217,7 @@ public class Main {
 
     }
 
-    public void merge() throws Exception {
+     public void merge() throws Exception {
         System.gc();
         Thread.sleep(3000);
         System.out.print("merge ");
@@ -219,6 +245,40 @@ public class Main {
 
     }
 
+
+    public void sort() throws Exception {
+        System.gc();
+        Thread.sleep(3000);
+        System.out.print("sort ");
+
+        System.arraycopy(arr, 0, SortArr, 0, size);
+
+//        MergeSortTask merge = new MergeSortTask(MergeArr, 0, size - 1);
+
+        long start = System.nanoTime();
+  //      pool.invoke(merge);
+        if(parl){
+        Arrays.sort(SortArr);
+        }else{
+             Arrays.parallelSort(SortArr);
+        }
+        long elapsed = System.nanoTime() - start;
+
+        //MaergeArr = merge.getResult();
+        for (int i = 1; i < size; i++) {
+            if (SortArr[i - 1] > SortArr[i]) {
+                float index1 = SortArr[i - 1];
+                float index2 = SortArr[i];
+                String str = "error i1:" + index1 + " i2:" + index2 + " i:" + i + " i1-i2:" + (index1 - index2);
+                System.err.println(str);
+                throw new Exception("not sorted " + str);
+            }
+        }
+        writeSort(elapsed + "");
+        System.out.println(" ns, sort success");
+
+    }
+
     @Override
     public String toString() {
         String str = ", mergeSort";
@@ -226,6 +286,12 @@ public class Main {
             str = ", quickSort";
             if (runMerge) {
                 str = str + ", mergeSort";
+            }
+            if(parl){
+                    str=str+", parllell";
+
+            }else{
+                str=str+", seriell";
             }
         }
         return "Main{" +

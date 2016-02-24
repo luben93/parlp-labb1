@@ -524,3 +524,9 @@ result below, Main{cores=1, size=100000000, mergeThreshold=10000000, quickThresh
 10223494428
 10180263508
 10142210379
+result below, Main{cores=1, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort, mergeSort}
+10472959046
+10406776397
+result below, Main{cores=1, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort, mergeSort}
+result below, Main{cores=1, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort, mergeSort}
+result below, Main{cores=1, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort, mergeSort}
