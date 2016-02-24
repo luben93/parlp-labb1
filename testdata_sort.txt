@@ -56,3 +56,4 @@ Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, qu
 2681495755
 2680186633
 Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort, mergeSort, seriell}
+//megatest
