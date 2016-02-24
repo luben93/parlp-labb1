@@ -20,6 +20,7 @@ public class Main {
     private static boolean runQuick = quick;
     private static boolean runMerge = true;
     private static boolean parl = false;
+    private static boolean Asort=false;
 
 
     private static ForkJoinPool pool = new ForkJoinPool();
@@ -130,21 +131,22 @@ public class Main {
     public static void main(String[] args) {
         try {
             Main m = new Main();
-            m.writeSort(m.toString());
-            for (int i = 0; i < 21; i++) {
-                m.sort();
+            if(Asort) {
+                m.writeSort(m.toString());
+                for (int i = 0; i < 21; i++) {
+                    m.sort();
+                }
+
+                System.out.println("-----------------------------------------------");
+                parl = true;
+                m.writeSort(m.toString());
+
+                for (int i = 0; i < 21; i++) {
+                    m.sort();
+                }
+
+                System.out.println("-----------------------------------------------");
             }
-
-            System.out.println("-----------------------------------------------");
-            parl = true;
-            m.writeSort(m.toString());
-
-            for (int i = 0; i < 21; i++) {
-                m.sort();
-            }
-
-            System.out.println("-----------------------------------------------");
-
             for (int i = 100; i < 1000000; i = i * 5) {
                 quickThreshold = i;
                 mergeThreshold = i;
