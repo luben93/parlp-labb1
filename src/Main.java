@@ -41,27 +41,6 @@ public class Main {
 //        Main m = new Main();
 
         if (all) {
-            m.writeSort(m.toString());
-            for(int i=0;i<21;i++){
-                m.sort();
-            }
-
-            System.out.println("-----------------------------------------------");
-            parl=true;
-             m.writeSort(m.toString());
-
-            for(int i=0;i<21;i++){
-                m.sort();
-            }
-
-            System.out.println("-----------------------------------------------");
-            parl=true;
-
-            for(int i=0;i<21;i++){
-                m.sort();
-            }
-
-            System.out.println("-----------------------------------------------");
 
 
             pool = new ForkJoinPool(1);
@@ -151,6 +130,21 @@ public class Main {
     public static void main(String[] args) {
         try {
             Main m = new Main();
+            m.writeSort(m.toString());
+            for(int i=0;i<21;i++){
+                m.sort();
+            }
+
+            System.out.println("-----------------------------------------------");
+            parl=true;
+            m.writeSort(m.toString());
+
+            for(int i=0;i<21;i++){
+                m.sort();
+            }
+
+            System.out.println("-----------------------------------------------");
+
             for (int i = 0; i < 1000000; i=i+1000) {
                 quickThreshold=i;
                 mergeThreshold=i;
