@@ -16,7 +16,7 @@ public class Main {
     public static int mergeThreshold = (int) 1E7;
     public static int quickThreshold = (int) 1E5;
     private static boolean quick = true;
-    private static boolean all = true;
+    private static boolean all = false;
     private static boolean runQuick = quick;
     private static boolean runMerge = true;
     private static boolean parl = false;
@@ -131,23 +131,23 @@ public class Main {
         try {
             Main m = new Main();
             m.writeSort(m.toString());
-            for(int i=0;i<21;i++){
+            for (int i = 0; i < 21; i++) {
                 m.sort();
             }
 
             System.out.println("-----------------------------------------------");
-            parl=true;
+            parl = true;
             m.writeSort(m.toString());
 
-            for(int i=0;i<21;i++){
+            for (int i = 0; i < 21; i++) {
                 m.sort();
             }
 
             System.out.println("-----------------------------------------------");
 
-            for (int i = -1; i < 1000000; i=i+1000) {
-                quickThreshold=i;
-                mergeThreshold=i;
+            for (int i = 100; i < 1000000; i = i * 5) {
+                quickThreshold = i;
+                mergeThreshold = i;
                 mainRunner(m);
                 System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++");
             }
