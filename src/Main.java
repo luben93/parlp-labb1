@@ -21,6 +21,8 @@ public class Main {
     private static boolean runMerge = true;
     private static boolean parl = false;
     private static boolean Asort=false;
+    private static int start=1000;
+    private static int stop=10000000;
 
 
     private static ForkJoinPool pool = new ForkJoinPool();
@@ -147,7 +149,7 @@ public class Main {
 
                 System.out.println("-----------------------------------------------");
             }
-            for (int i = 100; i < 1000000; i = i * 5) {
+            for (; start < stop;start = start * 5) {
                 quickThreshold = i;
                 mergeThreshold = i;
                 mainRunner(m);
