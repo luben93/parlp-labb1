@@ -81,3 +81,6 @@ Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, qu
 7697911870
 7694021351
 7696196557
+Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort, mergeSort, seriell}
+3033935068
+2945224628
