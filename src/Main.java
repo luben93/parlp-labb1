@@ -145,7 +145,7 @@ public class Main {
 
             System.out.println("-----------------------------------------------");
 
-            for (int i = 0; i < 1000000; i=i+1000) {
+            for (int i = -1; i < 1000000; i=i+1000) {
                 quickThreshold=i;
                 mergeThreshold=i;
                 mainRunner(m);
