@@ -40,6 +40,14 @@ public class Main {
         Main m = new Main();
 
         if (all) {
+            m.writeSort(m.toString());
+            for(int i=0;i<21;i++){
+                m.sort();
+            }
+
+            System.out.println("-----------------------------------------------");
+            parl=true;
+             m.writeSort(m.toString());
 
             for(int i=0;i<21;i++){
                 m.sort();
@@ -145,7 +153,7 @@ public class Main {
 
         fileQuick = Paths.get("testdata_quick.txt");
         //writeQuick("result below, " + this.toString());
-        fileSort = Paths.get("testdata_quick.txt");
+        fileSort = Paths.get("testdata_sort.txt");
 
         Random rand = new Random();
         for (int i = 0; i < size; i++) {
@@ -162,7 +170,7 @@ public class Main {
         System.out.print(str);
 
         try {
-            Files.write(fileQuick, Arrays.<CharSequence>asList(str), Charset.forName("UTF-8"), StandardOpenOption.APPEND);
+            Files.write(fileSort, Arrays.<CharSequence>asList(str), Charset.forName("UTF-8"), StandardOpenOption.APPEND);
         } catch (IOException e) {
             e.printStackTrace();
         }
