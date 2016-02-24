@@ -3,6 +3,8 @@ import java.util.concurrent.RecursiveAction;
 
 /**
  * Created by luben on 2/18/16.
+ * inspired by:
+ *  https://www.cs.auckland.ac.nz/%7Ejmor159/PLDS210/qsort1a.html
  */
 
 

@@ -2,6 +2,8 @@ import java.util.concurrent.RecursiveAction;
 
 /**
  * Created by luben on 2/18/16.
+ * inspired by:
+ * http://www.softwareandfinance.com/CSharp/MergeSort_Recursive.html
  */
 public class MergeSortTask extends RecursiveAction {
     private float[] numbers;

@@ -13,9 +13,9 @@ public class Main {
     private int cores = 4;
     //private int size = 1000;
     private int size = (int) 1E8;//1E8;
-    public static int mergeThreshold = (int)1E6;
-    public static int quickThreshold = 100;
-    private static boolean quick=false;
+    public static int mergeThreshold = (int)1E7;
+    public static int quickThreshold = (int)1E6;
+    private static boolean quick=true;
     private static boolean runQuick = quick;
     private static boolean runMerge = !quick;
 
@@ -31,7 +31,7 @@ public class Main {
         Main m =  new Main();
 
         if (runMerge) {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 20; i++) {
                 try {
                     m.merge();
                 } catch (Exception e) {
@@ -39,15 +39,18 @@ public class Main {
                 }
             }
             System.out.println("-----------------------------------------------");
+            //TODO test 1 and 2 and threshold -1
         }
         if (runQuick) {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 20; i++) {
                 try {
                     m.quick();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
+            //TODO test 1 and 2 and threshold -1
+
         }
     }
 
