@@ -597,3 +597,4 @@ result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThresh
 3823530386
 3797229321
 3767409734
+result below, Main{cores=1, size=100000000, mergeThreshold=-1, quickThreshold=-1, quickSort, mergeSort, parllell}
