@@ -19,48 +19,28 @@ public class Main {
     private static boolean all = true;
     private static boolean runQuick = quick;
     private static boolean runMerge = true;
-    private static boolean parl =false;
+    private static boolean parl = false;
 
 
-    private static ForkJoinPool pool=new ForkJoinPool();
+    private static ForkJoinPool pool = new ForkJoinPool();
     private float[] arr = new float[size];
     private float[] MergeArr = new float[size];
     private float[] QuickArr = new float[size];
     private float[] SortArr = new float[size];
-    private Path fileMerge, fileQuick,fileSort;
+    private Path fileMerge, fileQuick, fileSort;
 
     /**
      * run with:
      * /usr/lib/jvm/java-8-openjdk/bin/java -Xmx8000m -Didea.launcher.port=7540 -Didea.launcher.bin.path=/usr/share/intellij-idea-ultimate-edition/bin -Dfile.encoding=UTF-8 -classpath /usr/lib/jvm/java-8-openjdk/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/ext/cldrdata.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/ext/dnsns.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/ext/jaccess.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/ext/localedata.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/ext/nashorn.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/ext/sunec.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/ext/sunjce_provider.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/ext/sunpkcs11.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/ext/zipfs.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/management-agent.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar:/home/luben/Code/KTH/funksprak/parlp/labb1/out/production/labb1:/usr/share/intellij-idea-ultimate-edition/lib/idea_rt.jar com.intellij.rt.execution.application.AppMain Main
      *
-     * @param args
+     * @param m
      * @throws Exception
      */
-    public static void main(String[] args) throws Exception {
-        Main m = new Main();
+
+    public static void mainRunner(Main m) throws Exception {
+//        Main m = new Main();
 
         if (all) {
-            m.writeSort(m.toString());
-            for(int i=0;i<21;i++){
-                m.sort();
-            }
-
-            System.out.println("-----------------------------------------------");
-            parl=true;
-             m.writeSort(m.toString());
-
-            for(int i=0;i<21;i++){
-                m.sort();
-            }
-
-            System.out.println("-----------------------------------------------");
-            parl=true;
-
-            for(int i=0;i<21;i++){
-                m.sort();
-            }
-
-            System.out.println("-----------------------------------------------");
 
 
             pool = new ForkJoinPool(1);
@@ -147,6 +127,35 @@ public class Main {
 
     }
 
+    public static void main(String[] args) {
+        try {
+            Main m = new Main();
+            m.writeSort(m.toString());
+            for(int i=0;i<21;i++){
+                m.sort();
+            }
+
+            System.out.println("-----------------------------------------------");
+            parl=true;
+            m.writeSort(m.toString());
+
+            for(int i=0;i<21;i++){
+                m.sort();
+            }
+
+            System.out.println("-----------------------------------------------");
+
+            for (int i = 0; i < 1000000; i=i+1000) {
+                quickThreshold=i;
+                mergeThreshold=i;
+                mainRunner(m);
+                System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public Main() throws Exception {
         fileMerge = Paths.get("testdata_merge.txt");
         //writeMerge("result below, " + this.toString());
@@ -160,7 +169,6 @@ public class Main {
             float val = rand.nextFloat();
             arr[i] = val;
         }
-
 
 
     }
@@ -225,7 +233,7 @@ public class Main {
 
     }
 
-     public void merge() throws Exception {
+    public void merge() throws Exception {
         System.gc();
         Thread.sleep(3000);
         System.out.print("merge ");
@@ -264,11 +272,11 @@ public class Main {
 //        MergeSortTask merge = new MergeSortTask(MergeArr, 0, size - 1);
 
         long start = System.nanoTime();
-  //      pool.invoke(merge);
-        if(parl){
-        Arrays.sort(SortArr);
-        }else{
-             Arrays.parallelSort(SortArr);
+        //      pool.invoke(merge);
+        if (!parl) {
+            Arrays.sort(SortArr);
+        } else {
+            Arrays.parallelSort(SortArr);
         }
         long elapsed = System.nanoTime() - start;
 
@@ -295,11 +303,11 @@ public class Main {
             if (runMerge) {
                 str = str + ", mergeSort";
             }
-            if(parl){
-                    str=str+", parllell";
+            if (parl) {
+                str = str + ", parllell";
 
-            }else{
-                str=str+", seriell";
+            } else {
+                str = str + ", seriell";
             }
         }
         return "Main{" +
