@@ -480,6 +480,7 @@ result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThresh
 7696362684
 7695892973
 7694158205
+//Real testdata
 result below, Main{cores=1, size=100000000, mergeThreshold=10000000, quickThreshold=100000, quickSort, mergeSort, parllell}
 13099355751
 13027864112
