@@ -16,7 +16,7 @@ public class Main {
     public static int mergeThreshold = (int) 1E7;
     public static int quickThreshold = (int) 1E5;
     private static boolean quick = true;
-    private static boolean all = false;
+    private static boolean all = true;
     private static boolean runQuick = quick;
     private static boolean runMerge = true;
 
