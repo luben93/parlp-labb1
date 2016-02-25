@@ -132,7 +132,11 @@ public class Main {
 
     public static void main(String[] args) {
         try {
+
             Main m = new Main();
+            m.writeSort("Start new test");
+            m.writeQuick("Start new test");
+            m.writeMerge("Start new test");
             if(Asort) {
                 System.out.println("Arrays.sort");
                 m.writeSort(m.toString());
@@ -151,6 +155,7 @@ public class Main {
                 System.out.println("-----------------------------------------------");
             }
             for (; start < stop;start = start * 5) {
+                System.out.println("precent: "+stop/start*100+"%");
                 quickThreshold = start;
                 mergeThreshold = start*100;
                 mainRunner(m);
