@@ -5,6 +5,7 @@ import java.util.concurrent.RecursiveAction;
  */
 public class MergeSortTask extends RecursiveAction {
     private float[] numbers;
+    private static float[] temp=new float[Main.size];
     public static final int THRESHOLD = Main.mergeThreshold;
     private int left, right;
 
@@ -12,6 +13,7 @@ public class MergeSortTask extends RecursiveAction {
         numbers = arr;
         left = a;
         right = b;
+
     }
 
 
@@ -40,7 +42,7 @@ public class MergeSortTask extends RecursiveAction {
     }
 
     static public void DoMerge(float[] numbers, int left, int mid, int right) {
-        float[] temp = new float[numbers.length];
+        //float[] temp = new float[numbers.length];//TODO use only two arrays
         int i, left_end, num_elements, tmp_pos;
 
         left_end = (mid - 1);

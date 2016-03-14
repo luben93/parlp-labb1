@@ -1195,3 +1195,15 @@ result below, Main{cores=4, size=100000000, mergeThreshold=781250000, quickThres
 63045583593
 66527434494
 62548984511
+Start new test
+result below, Main{cores=4, size=100000000, mergeThreshold=50000, quickThreshold=500, mergeSort}
+Start new test
+result below, Main{cores=4, size=100000000, mergeThreshold=500, quickThreshold=500, mergeSort}
+4115859043
+4060207434
+4043567873
+4157963817
+3565064433
+3489056098
+4134296674
+3678521492

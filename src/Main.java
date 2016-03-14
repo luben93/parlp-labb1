@@ -12,15 +12,15 @@ public class Main {
     //parameters, test different
     //private int cores = 4;
     //private int size = 1000;
-    private int size = (int) 1E8;//1E8;
+    public static int size = (int) 1E8;//1E8;
     public static int mergeThreshold = (int) 1E7;
     public static int quickThreshold = (int) 1E5;
-    private static boolean quick = true;
-    private static boolean all = true;
+    private static boolean quick = false;
+    private static boolean all = false;
     private static boolean runQuick = quick;
     private static boolean runMerge = true;
     private static boolean parl = false;
-    private static boolean Asort=true;
+    private static boolean Asort=false;
     private static int start=500;
     private static int stop=10000000;
 
@@ -42,7 +42,7 @@ public class Main {
 
     public static void mainRunner(Main m) throws Exception {
 //        Main m = new Main();
-
+/*
         if (all) {
 
 
@@ -99,7 +99,7 @@ public class Main {
                 }
                 System.out.println("-----------------------------------------------");
             }
-        }
+        }*/
         pool = new ForkJoinPool(4);
         if (runQuick) {
             m.writeQuick("result below, " + m.toString());
@@ -154,10 +154,10 @@ public class Main {
 
                 System.out.println("-----------------------------------------------");
             }
-            for (; start < stop;start = start * 5) {
+            for (; start < stop;start = start * 10){
                 System.out.println("precent: "+stop/start*100+"%");
                 quickThreshold = start;
-                mergeThreshold = start*100;
+                mergeThreshold = start;
                 mainRunner(m);
                 System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++");
             }
@@ -221,7 +221,7 @@ public class Main {
 
 
         System.arraycopy(arr, 0, QuickArr, 0, size);
-        QuickSortTask quick = new QuickSortTask(QuickArr, (o1, o2) -> o1.compareTo(o2), 0, size - 1);
+        QuickSortTask quick = new QuickSortTask(QuickArr, Float::compareTo, 0, size - 1);
 
         long start = System.nanoTime();
         pool.invoke(quick);

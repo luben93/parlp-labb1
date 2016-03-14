@@ -1185,3 +1185,5 @@ result below, Main{cores=4, size=100000000, mergeThreshold=781250000, quickThres
 4092196607
 3790217172
 3895602920
+Start new test
+Start new test
