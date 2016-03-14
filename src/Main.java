@@ -4,25 +4,28 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ForkJoinPool;
 
 public class Main {
-    //parameters, test different
-    //private int cores = 4;
-    //private int size = 1000;
+
     public static int size = (int) 1E8;//1E8;
-    public static int mergeThreshold = (int) 1E7;
-    public static int quickThreshold = (int) 1E5;
-    private static boolean quick = false;
-    private static boolean all = false;
+    public static int mergeThreshold ;//= (int) 1E7;
+    public static int quickThreshold ;//= (int) 1E5;
+    private static boolean quick = true;//ture
+    private static boolean all = true;//ture
     private static boolean runQuick = quick;
     private static boolean runMerge = true;
     private static boolean parl = false;
-    private static boolean Asort=false;
-    private static int start=500;
-    private static int stop=10000000;
+    private static boolean Asort = true;//ture
+    private static int start = 100;
+    private static int stop = size;
+
+    private static ArrayList<Long> mergeElapsed = new ArrayList<>();
+    private static ArrayList<Long> quickElapsed = new ArrayList<>();
 
 
     private static ForkJoinPool pool = new ForkJoinPool();
@@ -40,77 +43,21 @@ public class Main {
      * @throws Exception
      */
 
-    public static void mainRunner(Main m) throws Exception {
-//        Main m = new Main();
-/*
-        if (all) {
 
-
-            pool = new ForkJoinPool(1);
-            if (runMerge) {
-                m.writeMerge("result below, " + m.toString());
-
-
-                for (int i = 0; i < 21; i++) {
-                    try {
-                        m.merge();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            System.out.println("-----------------------------------------------");
-            if (runQuick) {
-                m.writeQuick("result below, " + m.toString());
-
-                for (int i = 0; i < 21; i++) {
-                    try {
-                        m.quick();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            System.out.println("-----------------------------------------------");
-
-            pool = new ForkJoinPool(2);
-            if (runQuick) {
-                m.writeQuick("result below, " + m.toString());
-
-                for (int i = 0; i < 21; i++) {
-                    try {
-                        m.quick();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            System.out.println("-----------------------------------------------");
-
-            if (runMerge) {
-                m.writeMerge("result below, " + m.toString());
-
-                for (int i = 0; i < 21; i++) {
-                    try {
-                        m.merge();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-                System.out.println("-----------------------------------------------");
-            }
-        }*/
-        pool = new ForkJoinPool(4);
+    public static void bigRunner(Main m, int core) {
+        pool = new ForkJoinPool(core);
         if (runQuick) {
             m.writeQuick("result below, " + m.toString());
 
             for (int i = 0; i < 21; i++) {
                 try {
-                    m.quick();
+                    quickElapsed.add(m.quick());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
+            quickElapsed.remove(0);
+
         }
         System.out.println("-----------------------------------------------");
 
@@ -119,15 +66,19 @@ public class Main {
 
             for (int i = 0; i < 21; i++) {
                 try {
-                    m.merge();
+                    mergeElapsed.add(m.merge());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
             }
+            mergeElapsed.remove(0);
+
         }
         System.out.println("-----------------------------------------------");
-
-
+        if (core < 4) {
+            bigRunner(m, core + 1);
+        }
     }
 
     public static void main(String[] args) {
@@ -137,7 +88,7 @@ public class Main {
             m.writeSort("Start new test");
             m.writeQuick("Start new test");
             m.writeMerge("Start new test");
-            if(Asort) {
+            if (Asort) {
                 System.out.println("Arrays.sort");
                 m.writeSort(m.toString());
                 for (int i = 0; i < 21; i++) {
@@ -154,12 +105,35 @@ public class Main {
 
                 System.out.println("-----------------------------------------------");
             }
-            for (; start < stop;start = start * 10){
-                System.out.println("precent: "+stop/start*100+"%");
+            int bestMerge = 0, bestQuick = 0;
+            Double bestElapsedMerge = Double.MAX_VALUE;
+            Double bestElapsedQuick = bestElapsedMerge;
+            for (; start < stop; start = start * 10) {
                 quickThreshold = start;
                 mergeThreshold = start;
-                mainRunner(m);
+                bigRunner(m, 4);
+                Double tmp =mergeElapsed.stream().mapToLong(Long::longValue).average().orElse(Long.MAX_VALUE);
+                if (tmp < bestElapsedMerge) {
+                    bestMerge = start;
+                    bestElapsedMerge=tmp;
+                    System.out.println("new best merge" + start);
+                }
+
+                tmp = quickElapsed.stream().mapToLong(Long::longValue).average().orElse(Long.MAX_VALUE);
+                if (tmp < bestElapsedQuick) {
+                    bestQuick = start;
+                    bestElapsedQuick=tmp;
+                    System.out.println("new best quick" + start);
+
+                }
                 System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++");
+            }
+            quickThreshold = bestQuick;
+            mergeThreshold = bestMerge;
+            System.out.println("new best merge=" + mergeThreshold+" quick= "+quickThreshold);
+            System.out.println("/////////////////////////////////////////////////////");
+            if (all) {
+                bigRunner(m, 1);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -214,7 +188,7 @@ public class Main {
         }
     }
 
-    public void quick() throws Exception {
+    public long quick() throws Exception {
         System.gc();
         Thread.sleep(3000);
         System.out.print("quick ");
@@ -240,10 +214,11 @@ public class Main {
         }
         writeQuick(elapsed + "");
         System.out.println(" ns, quick success");
+        return elapsed;
 
     }
 
-    public void merge() throws Exception {
+    public long merge() throws Exception {
         System.gc();
         Thread.sleep(3000);
         System.out.print("merge ");
@@ -268,6 +243,7 @@ public class Main {
         }
         writeMerge(elapsed + "");
         System.out.println(" ns, merge success");
+        return elapsed;
 
     }
 

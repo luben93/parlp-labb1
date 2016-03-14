@@ -102,3 +102,68 @@ Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, qu
 2914110833
 Start new test
 Start new test
+Start new test
+Start new test
+Start new test
+Start new test
+Main{cores=4, size=100000000, mergeThreshold=10000000, quickThreshold=100000, mergeSort}
+8082447447
+8002118987
+Start new test
+Start new test
+Start new test
+Start new test
+Start new test
+Start new test
+Start new test
+Start new test
+Start new test
+Start new test
+Start new test
+Start new test
+Start new test
+Start new test
+Main{cores=4, size=100000000, mergeThreshold=0, quickThreshold=0, quickSort, mergeSort, seriell}
+7806365621
+7783555807
+7746463326
+7744895154
+7745699287
+7747041077
+7745469154
+7747010532
+7745302267
+7747763981
+7747158168
+7744918201
+7744903537
+7747732833
+7747106479
+7749935031
+7746903056
+7746126742
+7745372312
+7745258028
+7745164207
+Main{cores=4, size=100000000, mergeThreshold=0, quickThreshold=0, quickSort, mergeSort, parllell}
+2978539476
+2920184315
+2836089619
+2920713315
+2911682679
+2739417039
+2822595990
+2968846770
+2822569901
+2905452900
+2831271825
+2818444893
+2863272445
+2735877827
+2872051537
+2832217926
+2822666153
+2887191517
+2870735193
+2820836367
+2872722691
