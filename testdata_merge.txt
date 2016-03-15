@@ -1956,6 +1956,7 @@ result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThresh
 4024207739
 4016566772
 3577072328
+test begins here
 result below, Main{cores=1, size=100000000, mergeThreshold=100, quickThreshold=10000000, quickSort, mergeSort, parllell}
 12038500802
 12037664075

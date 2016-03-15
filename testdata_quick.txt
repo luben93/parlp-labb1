@@ -1456,6 +1456,7 @@ result below, Main{cores=4, size=100000000, mergeThreshold=10000000, quickThresh
 3827998845
 3899863513
 3894340029
+test begins here
 result below, Main{cores=1, size=100000000, mergeThreshold=100, quickThreshold=10000000, quickSort, mergeSort, parllell}
 12978923055
 12982429974
