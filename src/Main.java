@@ -21,7 +21,7 @@ public class Main {
     private static boolean runMerge = true;
     private static boolean parl = false;
     private static boolean Asort = true;//ture
-    private static int start = 100;
+    private static int start = 10;
     private static int stop = size;
 
     private static ArrayList<Long> mergeElapsed = new ArrayList<>();
@@ -113,6 +113,8 @@ public class Main {
                 mergeThreshold = start;
                 bigRunner(m, 4);
                 Double tmp =mergeElapsed.stream().mapToLong(Long::longValue).average().orElse(Long.MAX_VALUE);
+                System.out.println("new merge:  "+tmp);
+                System.out.println("best merge: "+bestElapsedMerge);
                 if (tmp < bestElapsedMerge) {
                     bestMerge = start;
                     bestElapsedMerge=tmp;
